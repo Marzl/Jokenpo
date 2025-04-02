@@ -1,0 +1,266 @@
+/* Estilos Globais */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Luckiest+Guy&display=swap");
+
+:root {
+  --primary: #d4af37;
+  --secondary: #b8860b;
+  --accent: #ffd700;
+  --dark: #1a1a2e;
+  --light: #f8bbd0;
+  --shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("https://i.postimg.cc/SQ64g6mc/resident-2024-08-23-aqcl9k4k-decks-with-the-most-expensive-playing-cards.png")
+    repeat;
+  background-attachment: fixed;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #000000 1%, rgba(212, 175, 55, 0.4) 100%);
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  max-width: 150px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+  transition: var(--transition);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.8));
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  padding: 20px;
+}
+
+.content {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--accent);
+  padding: 2.5rem;
+  border-radius: 16px;
+  max-width: 650px;
+  width: 100%;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5),
+    inset 0 0 20px rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: pulsarBorda 5s infinite alternate;
+}
+
+.content h2, .age-response {
+  font-family: "Kareudon";
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  background: linear-gradient(to right, #ff7700, #fff200);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  transform: skewX(-10deg);
+}
+
+.resultado h3 {
+  margin-bottom: 0.5 rem;
+  font-size: 2rem;
+  background: linear-gradient(to right, #ff7700, #fff200, #fff200, #ff7700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cartas {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.carta {
+  width: 150px;
+  transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
+  border-radius: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.cartas.mostrar .carta {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.carta:hover {
+  transform: scale(1.2);
+  filter: brightness(1.5);
+}
+
+.resultado {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.resultado img {
+  width: 150px;
+  transform-style: preserve-3d;
+  transition: transform 2s;
+  transform: rotateY(180deg); /* Inicia virada */
+}
+
+.resultado.revelar img {
+  transform: rotateY(0deg);
+}
+
+.mensagem {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+@keyframes slotGiro {
+  0% { transform: rotateX(0deg); opacity: 0.3; filter: blur(2px); }
+  15% { transform: rotateX(120deg); opacity: 0.6; filter: blur(1.5px); }
+  30% { transform: rotateX(240deg); opacity: 0.8; filter: blur(1px); }
+  50% { transform: rotateX(360deg) scale(1.1); opacity: 1; filter: blur(0px); }
+  65% { transform: rotateX(180deg) scale(1); opacity: 0.7; filter: blur(0.5px); }
+  80% { transform: rotateX(90deg) scale(1.05); opacity: 0.9; filter: blur(0.2px); }
+  100% { transform: rotateX(0deg) scale(1); opacity: 1; filter: blur(0px); }
+}
+
+.letra {
+  display: inline-block;
+  width: 20px; 
+  height: 60px; 
+  font-size: 2rem;
+  font-weight: bold;
+  color: orange; 
+  text-align: center;
+  line-height: 40px;
+  border-radius: 15px;
+  margin: 4px;
+  transform-origin: center;
+  animation: slotGiro 1.5s ease-in-out forwards;
+  font-family: "Kareudon";
+}
+
+.btn-reiniciar {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ffd700, #ffac33);
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: black;
+  font-weight: bold;
+}
+
+.btn-reiniciar:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+}
+
+#age-response button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ffd700, #ffac33);
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: black;
+  font-weight: bold;
+  margin: 10px;
+}
+
+#age-response button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: var(--accent);
+}
+
+@keyframes pulsarBorda {
+  0% {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+  50% {
+    border-color: #ffdb4d; /* Amarelo mais claro */
+    box-shadow: 0 0 40px rgba(255, 219, 77, 0.8), inset 0 0 25px rgba(255, 219, 77, 0.5);
+  }
+  100% {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+  .cartas {
+    gap: 15px;
+  }
+  .carta {
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1rem;
+  }
+  .carta {
+    width: 80px;
+  }
+}

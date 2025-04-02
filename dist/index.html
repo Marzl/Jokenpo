@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Jokenpo</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<img src="https://i.postimg.cc/GpCxYmvc/title.png" alt="Logo" class="logo">
+
+<div class="container" id="inicio">
+  <div class="content">
+    <h2>JoKenPo</h2>
+
+    <p id="idade-question">Você tem mais de 18 anos?</p>
+
+    <div id="age-response">
+      <button onclick="respostaIdade(true)">Sim</button>
+      <button onclick="respostaIdade(false)">Não</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tela de seleção de cartas (inicialmente oculta) -->
+<div class="container" id="selecao-cartas" style="display: none;">
+  <div class="content">
+    <h2>Faça sua escolha:</h2>
+    <div class="cartas mostrar">
+      <img src="https://i.postimg.cc/cLxW8pSj/Papel.png" alt="Papel" class="carta" onclick="escolherCarta('papel')">
+      <img src="https://i.postimg.cc/sgTrPTf2/Pedra.png" alt="Pedra" class="carta" onclick="escolherCarta('pedra')">
+      <img src="https://i.postimg.cc/hGhq2Vh1/Tesoura.png" alt="Tesoura" class="carta" onclick="escolherCarta('tesoura')">
+    </div>
+
+    <div class="resultado" id="resultado">
+      <div style="display: flex; justify-content: center; gap: 100px; align-items: center;">
+        <div>
+          <h3>Você</h3>
+          <img id="carta-jogador" src="">
+        </div>
+        <div>
+          <h3>Adversário</h3>
+          <img id="carta-adversario" src="">
+        </div>
+      </div>
+      <p class="mensagem" id="mensagem-resultado"></p>
+      <button class="btn-reiniciar" onclick="reiniciarJogo()">Reiniciar</button>
+    </div>
+  </div>
+</div>
+
+<footer>Marcelo Guedes - Imersão DEV - 2025</footer>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
