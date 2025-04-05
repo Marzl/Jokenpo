@@ -20,6 +20,7 @@
 body {
   background: url("https://i.postimg.cc/SQ64g6mc/resident-2024-08-23-aqcl9k4k-decks-with-the-most-expensive-playing-cards.png")
     repeat;
+  background-size: cover;
   background-attachment: fixed;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
@@ -93,7 +94,6 @@ body::after {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-
   transform: skewX(-10deg);
 }
 
@@ -105,6 +105,14 @@ body::after {
   background-clip: text;
   color: transparent;
 }
+
+#selecao-cartas {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
 
 .cartas {
   display: flex;
